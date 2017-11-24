@@ -9,6 +9,7 @@ target 'easy' do
     # Pods for testing
     pod 'Expecta'
     pod 'Specta'
+    pod 'OCMock'
   end
 
 end
