@@ -8,13 +8,12 @@
 
 #import "Expecta.h"
 #import <Specta/Specta.h>
+#import <GoogleMaps/GoogleMaps.h>
 #import "GMViewController.h"
-
-static NSString *const kButtonTaxtiTitle = @"CARREGAR TAXIS";
 
 @interface GMViewController (Private)
 @property (nonatomic, strong) GMLocationManager *locationManager;
-@property (weak, nonatomic) IBOutlet UIButton *searchTaxiButton;
+@property (weak, nonatomic) IBOutlet GMSMapView *mapView;
 @end
 
 SpecBegin(GMViewController)
@@ -27,7 +26,7 @@ describe(@"GMViewController", ^{
         controller = [[GMViewController alloc] init];
         expect(controller).notTo.beNil();
         expect(controller.locationManager).to.equal(manager);
-        expect(controller.searchTaxiButton.titleLabel.text).to.equal(kButtonTaxtiTitle);
+        expect(controller.mapView.myLocationEnabled).to.beTruthy();
     });
 });
 SpecEnd

@@ -8,7 +8,6 @@
 
 #import "GMDatabaseNetwork.h"
 static NSString *const kAPIBaseURLKey = @"API_BASE_URL";
-static NSString *const kAPIBaseURL = @"API_BASE_URL";
 static NSString *const kHTTPValueKey = @"application/json;charset=UTF-8";
 static NSString *const kContentTypeKey = @"content-type";
 static NSString *const kMethodGetKey = @"GET";

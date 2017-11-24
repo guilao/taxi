@@ -18,24 +18,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YbJ-AA-dED">
-                                <rect key="frame" x="0.0" y="617" width="375" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.7973309019" green="0.74175674439999995" blue="0.21409114400000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="CARREGAR TAXIS">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="tapSearchTaxiButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QnM-FB-9mM"/>
-                                </connections>
-                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ryv-fR-dag" customClass="GMSMapView">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Ryv-fR-dag" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="QQe-W9-eKN"/>
+                            <constraint firstItem="Ryv-fR-dag" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Qab-3Y-J2U"/>
+                            <constraint firstItem="Ryv-fR-dag" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="lbC-2m-xrd"/>
+                            <constraint firstItem="Ryv-fR-dag" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="oVo-7i-lgU"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="searchTaxiButton" destination="YbJ-AA-dED" id="CFB-DB-olE"/>
+                        <outlet property="mapView" destination="Ryv-fR-dag" id="w8Y-VB-aGN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

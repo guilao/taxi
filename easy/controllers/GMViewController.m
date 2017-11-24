@@ -10,18 +10,21 @@
 #import "GMTaxisManager.h"
 #import "GMTaxiModel.h"
 
+#import <GoogleMaps/GoogleMaps.h>
+
 @interface GMViewController ()
 @property (nonatomic, strong) GMLocationManager *locationManager;
-@property (nonatomic, readwrite) BOOL isLocationStarted;
-
-@property (weak, nonatomic) IBOutlet UIButton *searchTaxiButton;
+@property (weak, nonatomic) IBOutlet GMSMapView *mapView;
 @end
+
+static NSString * const kTaxiIconKey = @"taxi_icon";
 
 @implementation GMViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     [self setupLocation];
+    [self.locationManager initUserLocation];
 }
 
 #pragma mark - Location
@@ -29,19 +32,6 @@
     self.locationManager = [GMLocationManager new];
     self.locationManager.delegate = self;
     [self.locationManager requestAuthorizationLocation];
-}
-
-#pragma mark - IBAction
-- (IBAction)tapSearchTaxiButton:(id)sender {
-    if(!self.isLocationStarted) {
-        self.isLocationStarted = YES;
-        
-        if (!self.locationManager) {
-            [self setupLocation];
-        }
-        [self.locationManager initUserLocation];        
-        self.searchTaxiButton.userInteractionEnabled = NO;
-    }
 }
 
 #pragma mark - Error AlertView
@@ -61,20 +51,44 @@
 
 - (void)locationManageDidStopLocations:(GMCoordinateModel *)locations {
     [self stopLocationManager];
-
     GMTaxisManager *manager = [GMTaxisManager new];
     [manager listTaxisWithCoordinateModel:locations withCompletion:^(NSMutableArray *response, NSString *errorMessage) {
         if (errorMessage) {
             [self showAlertWithMessage:errorMessage];
             return;
         }
+        [self showMarkerTaxisOnMapWithArray:response];
     }];
+
+    [self setupMapViewWithMyLocation:locations];
 }
 
 - (void)stopLocationManager {
     [self.locationManager stopUserLocation];
     self.locationManager = nil;
-    self.isLocationStarted = NO;
-    self.searchTaxiButton.userInteractionEnabled = YES;
+}
+
+#pragma mark - Maps
+- (void)setupMapViewWithMyLocation:(GMCoordinateModel *)locations {
+    // Create a GMSCameraPosition that tells the map to display the
+    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:locations.latitude
+                                                            longitude:locations.longitude
+                                                                 zoom:16];
+    self.mapView.camera = camera;
+    self.mapView.myLocationEnabled = YES;
+}
+
+- (void)showMarkerTaxisOnMapWithArray:(NSMutableArray *)array {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        for (GMTaxiModel *model in array) {
+            GMSMarker *marker = [GMSMarker new];
+            marker.icon = [UIImage imageNamed:kTaxiIconKey];
+            marker.position = CLLocationCoordinate2DMake(model.coordinate.latitude, model.coordinate.longitude);
+            marker.title = model.driver;
+            marker.snippet = model.carType;
+            marker.appearAnimation = kGMSMarkerAnimationPop;
+            marker.map = self.mapView;
+        }
+    });
 }
 @end

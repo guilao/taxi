@@ -8,10 +8,17 @@
 
 #import "AppDelegate.h"
 #import "GMLocationManager.h"
+@import GoogleMaps;
+
+static NSString *const kAPIGoogleKey = @"GOOGLE_API_KEY";
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    NSString *googleAPIKey = [[[NSBundle mainBundle] infoDictionary] objectForKey:kAPIGoogleKey];
+    [GMSServices provideAPIKey:googleAPIKey];    
+    
     return YES;
 }
 
