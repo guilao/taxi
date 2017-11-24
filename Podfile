@@ -7,6 +7,8 @@ target 'easy' do
   target 'easyTests' do
     inherit! :search_paths
     # Pods for testing
+    pod 'Expecta'
+    pod 'Specta'
   end
 
 end
