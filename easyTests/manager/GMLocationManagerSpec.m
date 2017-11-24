@@ -6,35 +6,45 @@
 //  Copyright © 2017 Guilherme Martins. All rights reserved.
 //
 
-#import <XCTest/XCTest.h>
+#import "Expecta.h"
+#import <Specta/Specta.h>
+#import "GMLocationManager.h"
+#import "GMCoordinateModel.h"
 
-@interface GMLocationManagerSpec : XCTestCase
-
+@interface GMLocationManager (Private)
+@property (nonatomic, strong) CLLocationManager *locationManager;
+@property (nonatomic, strong) GMCoordinateModel *coordinateModel;
 @end
 
-@implementation GMLocationManagerSpec
+SpecBegin(GMLocationManager)
 
-- (void)setUp {
-    [super setUp];
+describe(@"GMLocationManager", ^{
     
-    // Put setup code here. This method is called before the invocation of each test method in the class.
+    __block GMLocationManager *manager;
+    __block GMCoordinateModel *coordinateModel;
     
-    // In UI tests it is usually best to stop immediately when a failure occurs.
-    self.continueAfterFailure = NO;
-    // UI tests must launch the application that they test. Doing this in setup will make sure it happens for each test method.
-    [[[XCUIApplication alloc] init] launch];
+    beforeAll(^{
+        manager = [GMLocationManager new];
+        [manager requestAuthorizationLocation];
+        
+        coordinateModel = [GMCoordinateModel new];
+        coordinateModel.latitude = -23.5826059;
+        coordinateModel.longitude = -46.6766973;
+    });
+    
+    it(@"should call the location manager with user", ^{
+        [manager initUserLocation];
+        expect(manager.locationManager).notTo.beNil();
+        expect([manager.locationManager class]).to.equal([CLLocationManager class]);
+        
+    });
+    
+    it(@"should stop the call the location manager with user", ^{
+        [manager stopUserLocation];
+        expect(manager.locationManager).to.beNil();
+        expect([manager.locationManager class]).notTo.equal([CLLocationManager class]);
+        
+    });
+});
 
-    // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
-}
-
-- (void)tearDown {
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
-    [super tearDown];
-}
-
-- (void)testExample {
-    // Use recording to get started writing UI tests.
-    // Use XCTAssert and related functions to verify your tests produce the correct results.
-}
-
-@end
+SpecEnd

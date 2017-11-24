@@ -1,5 +1,5 @@
 //
-//  GMTaxisBusiness.h
+//  GMTaxisManager.h
 //  easy
 //
 //  Created by Guilherme Martins on 23/11/17.

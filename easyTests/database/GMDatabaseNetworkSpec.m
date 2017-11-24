@@ -6,35 +6,76 @@
 //  Copyright © 2017 Guilherme Martins. All rights reserved.
 //
 
-#import <XCTest/XCTest.h>
+#import "Expecta.h"
+#import <Specta/Specta.h>
+#import <OCMock.h>
+#import "GMDatabaseNetwork.h"
 
-@interface GMDatabaseNetworkSpec : XCTestCase
+SpecBegin(GMDatabaseNetwork)
 
-@end
-
-@implementation GMDatabaseNetworkSpec
-
-- (void)setUp {
-    [super setUp];
+describe(@"Test method shared.", ^{
+    __block GMDatabaseNetwork *client;
     
-    // Put setup code here. This method is called before the invocation of each test method in the class.
+    beforeAll(^{
+        client = [GMDatabaseNetwork sharedClient];
+    });
     
-    // In UI tests it is usually best to stop immediately when a failure occurs.
-    self.continueAfterFailure = NO;
-    // UI tests must launch the application that they test. Doing this in setup will make sure it happens for each test method.
-    [[[XCUIApplication alloc] init] launch];
+    it(@"Should instantiate an GMDatabaseNetwork object.", ^{
+        expect(client).beInstanceOf([GMDatabaseNetwork class]);
+    });
+    
+});
 
-    // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
-}
+describe(@"IPFGenerics methods.", ^{
+    __block id mockDatabase;
+    __block NSString *api;
+    __block NSDictionary *parameters;
+    __block NSError *emptyError;
+    
+    beforeAll(^{
+        api = @"gettaxis?";
+        parameters = @{ @"lat": @"-23.5826059",
+                        @"lng": @"-46.6766973"
+                        };
+        emptyError = nil;
+    }); 
+    
+    beforeEach(^{
+        mockDatabase = OCMPartialMock([GMDatabaseNetwork sharedClient]);
+        OCMStub(ClassMethod([mockDatabase sharedClient])).andReturn(mockDatabase);
+    });
+    
+    it(@"Should return response of NSURL. success", ^{
+        NSMutableArray *array = [NSMutableArray array];
+        OCMStub([mockDatabase requestWithAPI:[OCMArg any]
+                                  parameters:[OCMArg any]
+                              withCompletion:([OCMArg invokeBlockWithArgs:array, [NSNull null], nil])]);
 
-- (void)tearDown {
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
-    [super tearDown];
-}
+        [[GMDatabaseNetwork sharedClient] requestWithAPI:api parameters:parameters withCompletion:^(id response, NSError *error) {
+            expect([response class]).to.equal([NSDictionary class]);
+            expect(error).to.beNil();
+            expect(response).notTo.beNil();
+        }];
+    });
+    
+    it(@"Should return response of NSURL. error denied", ^{
+        NSMutableArray *array = [NSMutableArray array];
+        OCMStub([mockDatabase requestWithAPI:[OCMArg any]
+                                  parameters:[OCMArg any]
+                              withCompletion:([OCMArg invokeBlockWithArgs:array, [NSNull null], nil])]);
+        
+        [[GMDatabaseNetwork sharedClient] requestWithAPI:@"" parameters:parameters withCompletion:^(id response, NSError *error) {
+            expect(error).notTo.beNil();
+            expect(error.code).equal(403);
+            expect(response).to.beNil();
+        }];
+    });
+    
+    afterEach(^{
+        [mockDatabase stopMocking];
+        mockDatabase = nil;
+    });
+    
+});
 
-- (void)testExample {
-    // Use recording to get started writing UI tests.
-    // Use XCTAssert and related functions to verify your tests produce the correct results.
-}
-
-@end
+SpecEnd
