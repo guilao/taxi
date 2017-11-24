@@ -11,8 +11,10 @@
 		8284FE181FC79A95009824C1 /* GMTaxisManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8284FE171FC79A95009824C1 /* GMTaxisManager.m */; };
 		8284FE1C1FC79ED4009824C1 /* GMCoordinateModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8284FE1B1FC79ED4009824C1 /* GMCoordinateModel.m */; };
 		8284FE1F1FC7A41D009824C1 /* GMTaxiModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8284FE1E1FC7A41D009824C1 /* GMTaxiModel.m */; };
+		8284FE221FC7AE32009824C1 /* GMLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8284FE211FC7AE32009824C1 /* GMLocationManager.m */; };
+		8284FE241FC7B43E009824C1 /* localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8284FE231FC7B43E009824C1 /* localizable.strings */; };
 		82D26BFF1FC782BF00E5D6AD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 82D26BFE1FC782BF00E5D6AD /* AppDelegate.m */; };
-		82D26C021FC782BF00E5D6AD /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82D26C011FC782BF00E5D6AD /* ViewController.m */; };
+		82D26C021FC782BF00E5D6AD /* GMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82D26C011FC782BF00E5D6AD /* GMViewController.m */; };
 		82D26C051FC782BF00E5D6AD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 82D26C031FC782BF00E5D6AD /* Main.storyboard */; };
 		82D26C071FC782BF00E5D6AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 82D26C061FC782BF00E5D6AD /* Assets.xcassets */; };
 		82D26C0A1FC782BF00E5D6AD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 82D26C081FC782BF00E5D6AD /* LaunchScreen.storyboard */; };
@@ -42,11 +44,14 @@
 		8284FE1B1FC79ED4009824C1 /* GMCoordinateModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMCoordinateModel.m; sourceTree = "<group>"; };
 		8284FE1D1FC7A41D009824C1 /* GMTaxiModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMTaxiModel.h; sourceTree = "<group>"; };
 		8284FE1E1FC7A41D009824C1 /* GMTaxiModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMTaxiModel.m; sourceTree = "<group>"; };
+		8284FE201FC7AE32009824C1 /* GMLocationManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMLocationManager.h; sourceTree = "<group>"; };
+		8284FE211FC7AE32009824C1 /* GMLocationManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMLocationManager.m; sourceTree = "<group>"; };
+		8284FE231FC7B43E009824C1 /* localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = localizable.strings; sourceTree = "<group>"; };
 		82D26BFA1FC782BF00E5D6AD /* easy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = easy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		82D26BFD1FC782BF00E5D6AD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		82D26BFE1FC782BF00E5D6AD /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		82D26C001FC782BF00E5D6AD /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		82D26C011FC782BF00E5D6AD /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		82D26C001FC782BF00E5D6AD /* GMViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMViewController.h; sourceTree = "<group>"; };
+		82D26C011FC782BF00E5D6AD /* GMViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMViewController.m; sourceTree = "<group>"; };
 		82D26C041FC782BF00E5D6AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		82D26C061FC782BF00E5D6AD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		82D26C091FC782BF00E5D6AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -105,19 +110,21 @@
 		821E96241FC784C80048F599 /* controllers */ = {
 			isa = PBXGroup;
 			children = (
-				82D26C001FC782BF00E5D6AD /* ViewController.h */,
-				82D26C011FC782BF00E5D6AD /* ViewController.m */,
+				82D26C001FC782BF00E5D6AD /* GMViewController.h */,
+				82D26C011FC782BF00E5D6AD /* GMViewController.m */,
 			);
 			path = controllers;
 			sourceTree = "<group>";
 		};
-		8284FE151FC79A59009824C1 /* business */ = {
+		8284FE151FC79A59009824C1 /* manager */ = {
 			isa = PBXGroup;
 			children = (
 				8284FE161FC79A95009824C1 /* GMTaxisManager.h */,
 				8284FE171FC79A95009824C1 /* GMTaxisManager.m */,
+				8284FE201FC7AE32009824C1 /* GMLocationManager.h */,
+				8284FE211FC7AE32009824C1 /* GMLocationManager.m */,
 			);
-			path = business;
+			path = manager;
 			sourceTree = "<group>";
 		};
 		8284FE191FC79D76009824C1 /* model */ = {
@@ -154,10 +161,10 @@
 		82D26BFC1FC782BF00E5D6AD /* easy */ = {
 			isa = PBXGroup;
 			children = (
-				8284FE191FC79D76009824C1 /* model */,
-				8284FE151FC79A59009824C1 /* business */,
 				821E96241FC784C80048F599 /* controllers */,
 				821E96221FC784950048F599 /* database */,
+				8284FE151FC79A59009824C1 /* manager */,
+				8284FE191FC79D76009824C1 /* model */,
 				82D26BFD1FC782BF00E5D6AD /* AppDelegate.h */,
 				82D26BFE1FC782BF00E5D6AD /* AppDelegate.m */,
 				82D26C031FC782BF00E5D6AD /* Main.storyboard */,
@@ -165,6 +172,7 @@
 				82D26C081FC782BF00E5D6AD /* LaunchScreen.storyboard */,
 				82D26C0B1FC782BF00E5D6AD /* Info.plist */,
 				82D26C0C1FC782BF00E5D6AD /* main.m */,
+				8284FE231FC7B43E009824C1 /* localizable.strings */,
 			);
 			path = easy;
 			sourceTree = "<group>";
@@ -276,6 +284,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				82D26C0A1FC782BF00E5D6AD /* LaunchScreen.storyboard in Resources */,
+				8284FE241FC7B43E009824C1 /* localizable.strings in Resources */,
 				82D26C071FC782BF00E5D6AD /* Assets.xcassets in Resources */,
 				82D26C051FC782BF00E5D6AD /* Main.storyboard in Resources */,
 			);
@@ -397,12 +406,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				82D26C021FC782BF00E5D6AD /* ViewController.m in Sources */,
+				82D26C021FC782BF00E5D6AD /* GMViewController.m in Sources */,
 				8284FE1F1FC7A41D009824C1 /* GMTaxiModel.m in Sources */,
 				821E96271FC785360048F599 /* GMDatabaseNetwork.m in Sources */,
 				82D26C0D1FC782BF00E5D6AD /* main.m in Sources */,
 				8284FE1C1FC79ED4009824C1 /* GMCoordinateModel.m in Sources */,
 				8284FE181FC79A95009824C1 /* GMTaxisManager.m in Sources */,
+				8284FE221FC7AE32009824C1 /* GMLocationManager.m in Sources */,
 				82D26BFF1FC782BF00E5D6AD /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -557,6 +567,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = A65LKMKV2Z;
+				GOOGLE_API_KEY = "AIzaSyCFv2ROvcAtEXSseDQxZoSPhuiKYWalO-c";
 				INFOPLIST_FILE = easy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.guimartins.easy;
@@ -573,6 +584,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = A65LKMKV2Z;
+				GOOGLE_API_KEY = "AIzaSyCFv2ROvcAtEXSseDQxZoSPhuiKYWalO-c";
 				INFOPLIST_FILE = easy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.guimartins.easy;

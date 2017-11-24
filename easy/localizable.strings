@@ -1,0 +1,21 @@
+/* 
+  localizable.strings
+  easy
+
+  Created by Guilherme Martins on 23/11/17.
+  Copyright © 2017 Guilherme Martins. All rights reserved.
+*/
+
+//Location Manager
+"location.service.off.title" = "Serviço de localização desabilitado";
+"location.service.off.message" = "Você deve ativar 'sempre' nas Configurações dos Serviços de Localização";
+"location.service.notDetermined.location" = "Não foi possível encontrar sua localização";
+
+//Default
+"ok.button" = "ok";
+"default.error.title" = "oops";
+"default.domain" = "Easy";
+
+//Taxi
+"taxi.response.error" = "No results found";
+

@@ -12,5 +12,6 @@
 
 @property (nonatomic, readwrite) float latitude;
 @property (nonatomic, readwrite) float longitude;
+@property (nonatomic, strong) NSString *timestamp;
 
 @end

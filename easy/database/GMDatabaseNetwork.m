@@ -7,7 +7,11 @@
 //
 
 #import "GMDatabaseNetwork.h"
+static NSString *const kAPIBaseURLKey = @"API_BASE_URL";
 static NSString *const kAPIBaseURL = @"API_BASE_URL";
+static NSString *const kHTTPValueKey = @"application/json;charset=UTF-8";
+static NSString *const kContentTypeKey = @"content-type";
+static NSString *const kMethodGetKey = @"GET";
 
 @implementation GMDatabaseNetwork
 
@@ -25,8 +29,8 @@ static NSString *const kAPIBaseURL = @"API_BASE_URL";
 - (void)requestWithAPI:(NSString *)api parameters:(id)parameters withCompletion:(void (^)(id, NSError *))block {
     NSString *urlConnection = [self setupBackendClientWithParameters:parameters andAPI:api];
     NSMutableURLRequest *requestURL = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlConnection]];
-    [requestURL setHTTPMethod:@"GET"];
-    [requestURL setValue:@"application/json;charset=UTF-8" forHTTPHeaderField:@"content-type"];
+    [requestURL setHTTPMethod:kMethodGetKey];
+    [requestURL setValue:kHTTPValueKey forHTTPHeaderField:kContentTypeKey];
     
     NSURLSession *session = [NSURLSession sharedSession];
     [[session dataTaskWithRequest:requestURL completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
@@ -47,7 +51,7 @@ static NSString *const kAPIBaseURL = @"API_BASE_URL";
 }
 
 - (NSString *)setupBackendClientWithParameters:(id)parameters andAPI:(NSString *)api{
-    NSString *stringURL = [[[NSBundle mainBundle] infoDictionary] objectForKey:kAPIBaseURL];
+    NSString *stringURL = [[[NSBundle mainBundle] infoDictionary] objectForKey:kAPIBaseURLKey];
     stringURL = [stringURL stringByAppendingString:api];
     
     NSMutableArray *queryItems = [NSMutableArray array];

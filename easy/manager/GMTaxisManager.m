@@ -22,7 +22,7 @@ static NSString *const kAPITaxis = @"gettaxis?";
     
     [[GMDatabaseNetwork sharedClient] requestWithAPI:kAPITaxis parameters:dictionary withCompletion:^(id response, NSError *error) {
         if (error) {
-            block (nil, error.description);
+            block (nil, NSLocalizedString(@"taxi.response.error", nil));
         }
         
         NSMutableArray *arrayResponse = response[kTaxisKey];

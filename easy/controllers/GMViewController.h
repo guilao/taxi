@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  GMViewController.h
 //  easy
 //
 //  Created by Guilherme Martins on 23/11/17.
@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GMLocationManager.h"
 
-@interface ViewController : UIViewController
+@interface GMViewController : UIViewController <GMLocationManagerDelegate>
 
 
 @end
