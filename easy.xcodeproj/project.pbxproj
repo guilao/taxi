@@ -13,6 +13,10 @@
 		8284FE1F1FC7A41D009824C1 /* GMTaxiModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8284FE1E1FC7A41D009824C1 /* GMTaxiModel.m */; };
 		8284FE221FC7AE32009824C1 /* GMLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8284FE211FC7AE32009824C1 /* GMLocationManager.m */; };
 		8284FE241FC7B43E009824C1 /* localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8284FE231FC7B43E009824C1 /* localizable.strings */; };
+		8284FE291FC7C7A2009824C1 /* GMViewControllerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 8284FE281FC7C7A2009824C1 /* GMViewControllerSpec.m */; };
+		8284FE2C1FC7C7C8009824C1 /* GMDatabaseNetworkSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 8284FE2B1FC7C7C8009824C1 /* GMDatabaseNetworkSpec.m */; };
+		8284FE2F1FC7C7DE009824C1 /* GMTaxisManagerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 8284FE2E1FC7C7DE009824C1 /* GMTaxisManagerSpec.m */; };
+		8284FE311FC7C80F009824C1 /* GMLocationManagerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 8284FE301FC7C80F009824C1 /* GMLocationManagerSpec.m */; };
 		82D26BFF1FC782BF00E5D6AD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 82D26BFE1FC782BF00E5D6AD /* AppDelegate.m */; };
 		82D26C021FC782BF00E5D6AD /* GMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82D26C011FC782BF00E5D6AD /* GMViewController.m */; };
 		82D26C051FC782BF00E5D6AD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 82D26C031FC782BF00E5D6AD /* Main.storyboard */; };
@@ -47,6 +51,10 @@
 		8284FE201FC7AE32009824C1 /* GMLocationManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMLocationManager.h; sourceTree = "<group>"; };
 		8284FE211FC7AE32009824C1 /* GMLocationManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMLocationManager.m; sourceTree = "<group>"; };
 		8284FE231FC7B43E009824C1 /* localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = localizable.strings; sourceTree = "<group>"; };
+		8284FE281FC7C7A2009824C1 /* GMViewControllerSpec.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMViewControllerSpec.m; sourceTree = "<group>"; };
+		8284FE2B1FC7C7C8009824C1 /* GMDatabaseNetworkSpec.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMDatabaseNetworkSpec.m; sourceTree = "<group>"; };
+		8284FE2E1FC7C7DE009824C1 /* GMTaxisManagerSpec.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMTaxisManagerSpec.m; sourceTree = "<group>"; };
+		8284FE301FC7C80F009824C1 /* GMLocationManagerSpec.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMLocationManagerSpec.m; sourceTree = "<group>"; };
 		82D26BFA1FC782BF00E5D6AD /* easy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = easy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		82D26BFD1FC782BF00E5D6AD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		82D26BFE1FC782BF00E5D6AD /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -138,6 +146,31 @@
 			path = model;
 			sourceTree = "<group>";
 		};
+		8284FE271FC7C76F009824C1 /* controllers */ = {
+			isa = PBXGroup;
+			children = (
+				8284FE281FC7C7A2009824C1 /* GMViewControllerSpec.m */,
+			);
+			path = controllers;
+			sourceTree = "<group>";
+		};
+		8284FE2A1FC7C7AE009824C1 /* database */ = {
+			isa = PBXGroup;
+			children = (
+				8284FE2B1FC7C7C8009824C1 /* GMDatabaseNetworkSpec.m */,
+			);
+			path = database;
+			sourceTree = "<group>";
+		};
+		8284FE2D1FC7C7CD009824C1 /* manager */ = {
+			isa = PBXGroup;
+			children = (
+				8284FE2E1FC7C7DE009824C1 /* GMTaxisManagerSpec.m */,
+				8284FE301FC7C80F009824C1 /* GMLocationManagerSpec.m */,
+			);
+			path = manager;
+			sourceTree = "<group>";
+		};
 		82D26BF11FC782BF00E5D6AD = {
 			isa = PBXGroup;
 			children = (
@@ -180,6 +213,9 @@
 		82D26C151FC782BF00E5D6AD /* easyTests */ = {
 			isa = PBXGroup;
 			children = (
+				8284FE271FC7C76F009824C1 /* controllers */,
+				8284FE2A1FC7C7AE009824C1 /* database */,
+				8284FE2D1FC7C7CD009824C1 /* manager */,
 				82D26C161FC782BF00E5D6AD /* easyTests.m */,
 				82D26C181FC782BF00E5D6AD /* Info.plist */,
 			);
@@ -421,7 +457,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8284FE311FC7C80F009824C1 /* GMLocationManagerSpec.m in Sources */,
 				82D26C171FC782BF00E5D6AD /* easyTests.m in Sources */,
+				8284FE2C1FC7C7C8009824C1 /* GMDatabaseNetworkSpec.m in Sources */,
+				8284FE2F1FC7C7DE009824C1 /* GMTaxisManagerSpec.m in Sources */,
+				8284FE291FC7C7A2009824C1 /* GMViewControllerSpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
